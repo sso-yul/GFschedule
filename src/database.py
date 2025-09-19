@@ -37,7 +37,7 @@ class Database:
         conn.close()
 
     # 일정
-    def get_schedule(self, date):
+    def get_schedules(self, date):
         conn = sqlite3.connect(self.db_path)
         cursor = conn.cursor()
         cursor.execute('SELECT * FROM schedules WHERE date = ?', (date,))
@@ -76,7 +76,7 @@ class Database:
     def delete_schedule(self, schedule_id):
         conn = sqlite3.connect(self.db_path)
         cursor = conn.cursor()
-        cursor.execute('DELETE FROM schedules WHERE id = ?', (schedule_id))
+        cursor.execute('DELETE FROM schedules WHERE id = ?', schedule_id)
         conn.commit()
         conn.close()
 
@@ -121,6 +121,6 @@ class Database:
     def delete_todo(self, todo_id):
         conn = sqlite3.connect(self.db_path)
         cursor = conn.cursor()
-        cursor.execute('DELETE FROM todos WHERE id = ?', (todo_id))
+        cursor.execute('DELETE FROM todos WHERE id = ?', todo_id)
         conn.commit()
         conn.close()
